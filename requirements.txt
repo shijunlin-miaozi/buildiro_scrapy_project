@@ -25,6 +25,7 @@ PyDispatcher==2.0.5
 pyOpenSSL==21.0.0
 queuelib==1.6.2
 Scrapy==2.5.1
+scrapy-splash==0.8.0
 service-identity==21.1.0
 six==1.16.0
 Twisted==21.7.0

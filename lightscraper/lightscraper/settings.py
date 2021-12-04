@@ -1,5 +1,57 @@
 # Scrapy settings for lightscraper project
-#
+
+
+BOT_NAME = 'lightscraper'
+
+SPIDER_MODULES = ['lightscraper.spiders']
+NEWSPIDER_MODULE = 'lightscraper.spiders'
+
+# Obey robots.txt rules
+ROBOTSTXT_OBEY = False
+
+
+# Enable image and file pipeline at the same time
+ITEM_PIPELINES = {
+                  'scrapy.pipelines.images.ImagesPipeline': 1,
+                  'scrapy.pipelines.files.FilesPipeline': 2,
+                 }
+FILES_STORE = 'file_download'
+IMAGES_STORE = 'img_download'
+
+# # Avoid downloading file content that has been downloaded in the last 90 days
+# FILES_EXPIRES = 90
+# # Avoid downloading image content that has been downloaded in the last 90 days
+# IMAGES_EXPIRES = 30
+
+# # Set image thumbnail
+# IMAGES_THUMBS = {
+#     'small': (50, 50),
+#     'big': (250, 250),
+# }
+# # Image filter, minimum height and width, no download below this size
+# IMAGES_MIN_HEIGHT = 110
+# IMAGES_MIN_WIDTH = 110
+
+
+# # setting for scrapy_splash
+# SPLASH_URL = 'http://localhost:8050'
+# DOWNLOADER_MIDDLEWARES = {
+#     'scrapy_splash.SplashCookiesMiddleware': 723,
+#     'scrapy_splash.SplashMiddleware': 725,
+#     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
+# }
+
+
+# to avoid 301 redirect error when downloading video
+MEDIA_ALLOW_REDIRECTS = True
+
+
+
+
+
+
+
+
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
 #
@@ -7,24 +59,15 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'lightscraper'
-
-SPIDER_MODULES = ['lightscraper.spiders']
-NEWSPIDER_MODULE = 'lightscraper.spiders'
-
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'lightscraper (+http://www.yourdomain.com)'
 
-# Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+# SPIDER_MIDDLEWARES = {
+#     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
+# }
 
-ITEM_PIPELINES = {'scrapy.pipelines.images.ImagesPipeline': 1}
-IMAGES_STORE = 'download'
-
-
-# ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
-# FILES_STORE = 'media_download'
+# DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
+# HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
