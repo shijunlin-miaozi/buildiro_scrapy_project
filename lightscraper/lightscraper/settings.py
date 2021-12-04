@@ -46,7 +46,7 @@ IMAGES_STORE = 'img_download'
 MEDIA_ALLOW_REDIRECTS = True
 
 
-
+CHROME_DRIVER_PATH = '/Applications/driver/chromedriver'
 
 
 
